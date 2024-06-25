@@ -13,8 +13,13 @@ const BASE_URL = process.env.BASE_URL
 dotenv.config();
 connectDB();
 const app = express();
-app.use(express.json()); // to accept json data
-app.use(cors());
+app.use(express.json());
+const corsOptions = {
+  origin: 'https://chat-fullstack-ov7q.onrender.com',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}; // to accept json data
+app.use(cors(corsOptions));
 
 
 
