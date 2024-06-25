@@ -32,11 +32,11 @@ const __dirname1 = path.resolve(); // Resolves to 'project-root'
 
 // Serve static files from 'frontend/build'
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname1, '..', 'frontend', 'build')));
+  app.use(express.static(path.join(__dirname1, 'frontend', 'build')));
 
   // Serve index.html for any route in production
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname1, '..', 'frontend', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname1, 'frontend', 'build', 'index.html'));
   });
 } else {
   // In development mode, handle other routes or provide a simple response
