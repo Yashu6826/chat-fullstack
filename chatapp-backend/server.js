@@ -65,7 +65,7 @@ const server = app.listen(PORT,console.log(`serveris running on port ${PORT}`))
 const io = require('socket.io')(server,{
     pingTimeout:6000,
     cors:{
-      origin: "https://chat-fullstack-ov7q.onrender.com",
+      origin: "*",
       credentials: true
     },
 });
