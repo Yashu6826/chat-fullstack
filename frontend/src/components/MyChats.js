@@ -39,8 +39,21 @@ const MyChats = ({ fetchAgain }) => {
   useEffect(() => {
     setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
     fetchChats();
+
+    if (socket) {
+      socket.on("new message", (newMessage) => {
+        if (selectedChat && selectedChat._id === newMessage.chat._id) {
+          setChats((prevChats) =>
+            prevChats.map((chat) =>
+              chat._id === newMessage.chat._id ? { ...chat, latestMessage: newMessage } : chat
+            )
+          );
+        }
+      });
+    }
+
     // eslint-disable-next-line
-  }, [fetchAgain]);
+  }, [fetchAgain, socket]);
 
   return (
     <Box
