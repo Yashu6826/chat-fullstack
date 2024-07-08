@@ -65,8 +65,8 @@ const server = app.listen(PORT,console.log(`server is running on port ${PORT}`))
 const io = require('socket.io')(server,{
     pingTimeout:6000,
     cors:{
-      origin: "*",
-      credentials: true
+      origin: '*',
+      methods: ["GET", "POST","PUT","DELETE","PATCH"]
     },
 });
 
